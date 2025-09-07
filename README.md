@@ -1,58 +1,48 @@
-# DIO - Trilha .NET - API e Entity Framework
-www.dio.me
+# TrilhaApiDesafio – TarefaController
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de API e Entity Framework, da trilha .NET da DIO.
+API RESTful em **ASP.NET Core** para gerenciar tarefas de um sistema de organização. Permite criar, ler, atualizar e deletar tarefas, além de consultas filtradas por título, data ou status.
 
-## Contexto
-Você precisa construir um sistema gerenciador de tarefas, onde você poderá cadastrar uma lista de tarefas que permitirá organizar melhor a sua rotina.
+## Estrutura do Projeto
 
-Essa lista de tarefas precisa ter um CRUD, ou seja, deverá permitir a você obter os registros, criar, salvar e deletar esses registros.
+- **Controller:** `TarefaController` – gerencia operações CRUD e consultas.
+- **Contexto:** `OrganizadorContext` – gerencia conexão com banco via Entity Framework Core.
+- **Modelo:** `Tarefa` – entidade com `Id`, `Titulo`, `Descricao`, `Data` e `Status`.
 
-A sua aplicação deverá ser do tipo Web API ou MVC, fique a vontade para implementar a solução que achar mais adequado.
+## Endpoints
 
-A sua classe principal, a classe de tarefa, deve ser a seguinte:
+### Criar, Atualizar e Deletar
 
-![Diagrama da classe Tarefa](diagrama.png)
+- **POST /Tarefa**  
+  Cria uma nova tarefa.  
+  **Validações:**  Data da tarefa não pode ser vazia  
 
-Não se esqueça de gerar a sua migration para atualização no banco de dados.
+- **PUT /Tarefa/{id}**  
+  Atualiza uma tarefa existente.  
+  **Validações:**  Data da tarefa não pode ser vazia | ID da URL deve coincidir com ID da tarefa  
 
-## Métodos esperados
-É esperado que você crie o seus métodos conforme a seguir:
+- **DELETE /Tarefa/{id}**  
+  Remove tarefa pelo `id`.  
 
+### Obter Tarefas
 
-**Swagger**
+- **GET /Tarefa/{id}**  
+  Retorna a tarefa pelo `id`.  
 
+- **GET /Tarefa/ObterTodos**  
+  Retorna todas as tarefas.  
 
-![Métodos Swagger](swagger.png)
+- **GET /Tarefa/ObterPorTitulo?titulo=xxx**  
+  Retorna tarefas que contêm o título especificado.  
 
+- **GET /Tarefa/ObterPorData?data=yyyy-MM-dd**  
+  Retorna tarefas de uma data específica.  
 
-**Endpoints**
+- **GET /Tarefa/ObterPorStatus?status=EnumStatusTarefa**  
+  Retorna tarefas filtradas por status.  
 
+## Tecnologias
 
-| Verbo  | Endpoint                | Parâmetro | Body          |
-|--------|-------------------------|-----------|---------------|
-| GET    | /Tarefa/{id}            | id        | N/A           |
-| PUT    | /Tarefa/{id}            | id        | Schema Tarefa |
-| DELETE | /Tarefa/{id}            | id        | N/A           |
-| GET    | /Tarefa/ObterTodos      | N/A       | N/A           |
-| GET    | /Tarefa/ObterPorTitulo  | titulo    | N/A           |
-| GET    | /Tarefa/ObterPorData    | data      | N/A           |
-| GET    | /Tarefa/ObterPorStatus  | status    | N/A           |
-| POST   | /Tarefa                 | N/A       | Schema Tarefa |
-
-Esse é o schema (model) de Tarefa, utilizado para passar para os métodos que exigirem
-
-```json
-{
-  "id": 0,
-  "titulo": "string",
-  "descricao": "string",
-  "data": "2022-06-08T01:31:07.056Z",
-  "status": "Pendente"
-}
-```
-
-
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+- .NET C#
+- ASP.NET Core
+- Entity Framework
+- SQL Server
