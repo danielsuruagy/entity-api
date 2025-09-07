@@ -1,16 +1,20 @@
-# TrilhaApiDesafio – TarefaController
+# API de Tarefas
 
-API RESTful em **ASP.NET Core** para gerenciar tarefas de um sistema de organização. Permite criar, ler, atualizar e deletar tarefas, além de consultas filtradas por título, data ou status.
+## 💻 Tecnologias
 
-## Estrutura do Projeto
+- .NET C#
+- Entity Framework Core (SQL Server)
+- Swagger para documentação da API
 
-- **Controller:** `TarefaController` – gerencia operações CRUD e consultas.
-- **Contexto:** `OrganizadorContext` – gerencia conexão com banco via Entity Framework Core.
-- **Modelo:** `Tarefa` – entidade com `Id`, `Titulo`, `Descricao`, `Data` e `Status`.
+## 🧠 Estrutura do Projeto
 
-## Endpoints
+- **Controller:** TarefaController – gerencia operações CRUD e consultas
+- **Contexto:** OrganizadorContext – gerencia conexão com banco via Entity Framework Core
+- **Modelo:** Tarefa – entidade com Id, Titulo, Descricao, Data e Status
 
-### Criar, Atualizar e Deletar
+## 🚀 Endpoints
+
+### 🎯 Criar, Atualizar e Deletar
 
 - **POST /Tarefa**  
   Cria uma nova tarefa.  
@@ -21,12 +25,12 @@ API RESTful em **ASP.NET Core** para gerenciar tarefas de um sistema de organiza
   **Validações:**  Data da tarefa não pode ser vazia | ID da URL deve coincidir com ID da tarefa  
 
 - **DELETE /Tarefa/{id}**  
-  Remove tarefa pelo `id`.  
+  Remove tarefa pelo id.  
 
-### Obter Tarefas
+### 🎯 Obter Tarefas
 
 - **GET /Tarefa/{id}**  
-  Retorna a tarefa pelo `id`.  
+  Retorna a tarefa pelo id.  
 
 - **GET /Tarefa/ObterTodos**  
   Retorna todas as tarefas.  
@@ -39,10 +43,3 @@ API RESTful em **ASP.NET Core** para gerenciar tarefas de um sistema de organiza
 
 - **GET /Tarefa/ObterPorStatus?status=EnumStatusTarefa**  
   Retorna tarefas filtradas por status.  
-
-## Tecnologias
-
-- .NET C#
-- ASP.NET Core
-- Entity Framework
-- SQL Server
